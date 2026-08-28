@@ -1,0 +1,32 @@
+<section class="section section-alt" id="summary">
+  <div class="container">
+    <app-section-head
+      class="reveal"
+      eyebrow="Training Impact"
+      title="Summary of training provided"
+      description="A snapshot of the programs, industries, and outcomes delivered by Perfect EHS Solutions."
+    />
+
+    <div class="stats-grid reveal">
+      @for (item of summary; track item.label) {
+        <article class="stat-card">
+          <strong>{{ item.value }}</strong>
+          <h3>{{ item.label }}</h3>
+          <p>{{ item.detail }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="program-grid reveal">
+      @for (item of programs; track item.title) {
+        <article class="program-card">
+          <div class="program-card-head">
+            <h3>{{ item.title }}</h3>
+            <span class="pill pill-dark">{{ item.count }}</span>
+          </div>
+          <p>{{ item.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

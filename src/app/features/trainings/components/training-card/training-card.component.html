@@ -1,0 +1,17 @@
+<article class="training-card">
+  <div class="training-card-top">
+    <span class="pill">{{ training.category }}</span>
+    <span class="training-date">{{ training.date }}</span>
+  </div>
+  <h3>{{ training.title }}</h3>
+  <ul class="training-meta">
+    @if (training.time) {
+      <li><strong>Time:</strong> {{ training.time }}</li>
+    }
+    <li><strong>Venue:</strong> {{ training.venue }}</li>
+    @if (training.seats) {
+      <li><strong>Status:</strong> {{ training.seats }}</li>
+    }
+  </ul>
+  <button class="text-link" type="button">{{ actionLabel }}</button>
+</article>

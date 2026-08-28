@@ -1,0 +1,26 @@
+@if (content$ | async; as content) {
+  <app-hero-showcase
+    [slides]="content.showcaseSlides"
+    [marqueeItems]="content.showcaseMarquee"
+    [stats]="content.heroStats"
+  />
+  <app-services-section [services]="content.services" />
+  <app-trainings-section [upcoming]="content.upcomingTrainings" [conducted]="content.conductedTrainings" />
+  <app-summary-section [summary]="content.trainingSummary" [programs]="content.programHighlights" />
+  <app-clients-section [clients]="content.clients" [testimonials]="content.testimonials" />
+} @else {
+  <app-hero-showcase
+    [slides]="fallback.showcaseSlides"
+    [marqueeItems]="fallback.showcaseMarquee"
+    [stats]="fallback.heroStats"
+  />
+  <app-services-section [services]="fallback.services" />
+  <app-trainings-section
+    [upcoming]="fallback.upcomingTrainings"
+    [conducted]="fallback.conductedTrainings"
+  />
+  <app-summary-section [summary]="fallback.trainingSummary" [programs]="fallback.programHighlights" />
+  <app-clients-section [clients]="fallback.clients" [testimonials]="fallback.testimonials" />
+}
+
+<app-contact-section />

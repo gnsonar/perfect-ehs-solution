@@ -1,0 +1,32 @@
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#home" (click)="closeNav()">
+      <img class="brand-logo" src="/assets/logo.png" alt="Perfect EHS Solutions logo" />
+      <span class="brand-text">
+        <strong>Perfect EHS Solutions</strong>
+        <small>Warrior of Generative Safety Culture</small>
+      </span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      [attr.aria-label]="navOpen() ? 'Close menu' : 'Open menu'"
+      [attr.aria-expanded]="navOpen()"
+      aria-controls="site-nav"
+      (click)="toggleNav()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" [class.is-open]="navOpen()" aria-label="Main navigation">
+      <a href="#home" (click)="closeNav()">Home</a>
+      <a href="#services" (click)="closeNav()">Services</a>
+      <a href="#trainings" (click)="closeNav()">Trainings</a>
+      <a href="#clients" (click)="closeNav()">Clients</a>
+      <a class="btn btn-small" href="#contact" (click)="closeNav()">Contact</a>
+    </nav>
+  </div>
+</header>

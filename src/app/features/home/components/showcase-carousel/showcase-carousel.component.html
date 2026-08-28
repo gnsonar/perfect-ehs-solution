@@ -1,0 +1,43 @@
+<div
+  class="hero-carousel reveal"
+  (mouseenter)="pause()"
+  (mouseleave)="resume()"
+>
+  <div class="carousel-viewport">
+    <div class="carousel-track">
+      @for (slide of slides; track slide.title; let i = $index) {
+        <article class="carousel-slide" [class.is-active]="current() === i">
+          <img [src]="slide.image" [alt]="slide.title" [loading]="i === 0 ? 'eager' : 'lazy'" />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-content">
+            <span class="pill pill-light">{{ slide.tag }}</span>
+            <h3>{{ slide.title }}</h3>
+            <p>{{ slide.caption }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+
+  <div class="carousel-controls">
+    <button class="carousel-btn" type="button" aria-label="Previous slide" (click)="prev(); restartAutoplay()">
+      &#8592;
+    </button>
+    <div class="carousel-dots" role="tablist" aria-label="Choose slide">
+      @for (slide of slides; track slide.title; let i = $index) {
+        <button
+          type="button"
+          class="carousel-dot"
+          [class.is-active]="current() === i"
+          role="tab"
+          [attr.aria-label]="'Go to slide ' + (i + 1)"
+          [attr.aria-selected]="current() === i"
+          (click)="goTo(i); restartAutoplay()"
+        ></button>
+      }
+    </div>
+    <button class="carousel-btn" type="button" aria-label="Next slide" (click)="next(); restartAutoplay()">
+      &#8594;
+    </button>
+  </div>
+</div>

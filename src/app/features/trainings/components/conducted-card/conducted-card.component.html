@@ -1,0 +1,16 @@
+<article class="conducted-card">
+  <div class="conducted-image">
+    <img [src]="training.image" [alt]="training.title + ' training session'" loading="lazy" />
+    <span class="pill pill-light">{{ training.category }}</span>
+  </div>
+  <div class="conducted-body">
+    <time [attr.datetime]="training.date">{{ training.date }}</time>
+    <h3>{{ training.title }}</h3>
+    <ul class="training-meta">
+      <li><strong>Venue:</strong> {{ training.venue }}</li>
+      @if (training.participants) {
+        <li><strong>Attendance:</strong> {{ training.participants }}</li>
+      }
+    </ul>
+  </div>
+</article>

@@ -1,0 +1,30 @@
+<section class="hero-showcase" id="home">
+  <div class="showcase-glow showcase-glow-left" aria-hidden="true"></div>
+  <div class="showcase-glow showcase-glow-right" aria-hidden="true"></div>
+
+  <div class="container hero-showcase-grid reveal">
+    <div class="hero-copy">
+      <p class="eyebrow">We Help to Inculcate Safety Culture Within Organizations</p>
+      <h1>An ISO certified statutory consultant &amp; training institute</h1>
+      <p class="lead">
+       We provide Perfect EHS Solutions in the field of Occupational Health ,Safety & Fire for Industrial and Non-Industrial sectors of the society with the view to provide the sustainable life of the people.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="#trainings">View Trainings</a>
+        <a class="btn btn-outline" href="#contact">Request a Quote</a>
+      </div>
+      <div class="hero-stats">
+        @for (stat of stats; track stat.label) {
+          <div class="hero-stat">
+            <strong>{{ stat.value }}</strong>
+            <span>{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <app-showcase-carousel [slides]="slides" />
+  </div>
+
+  <app-showcase-marquee [items]="marqueeItems" />
+</section>

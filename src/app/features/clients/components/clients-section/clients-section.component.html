@@ -1,0 +1,35 @@
+<section class="section" id="clients">
+  <div class="container">
+    <app-section-head
+      class="reveal"
+      eyebrow="Our Clients"
+      title="Organizations we serve &amp; testimonials"
+      description="We partner with construction, oil &amp; gas, manufacturing, hospitality, and facility management teams across the region."
+    />
+
+    <div class="client-grid reveal">
+      @for (client of clients; track client.name) {
+        <article class="client-card">
+          <div class="client-logo" aria-hidden="true">
+            <img [src]="client.logo" />
+          </div>
+          <h3>{{ client.name }}</h3>
+          <p>{{ client.sector }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="testimonial-grid reveal">
+      @for (item of testimonials; track item.name) {
+        <article class="testimonial-card">
+          <div class="stars" [attr.aria-label]="item.rating + ' out of 5 stars'">{{ stars(item.rating) }}</div>
+          <blockquote>{{ item.quote }}</blockquote>
+          <div class="testimonial-author">
+            <strong>{{ item.name }}</strong>
+            <span>{{ item.role }}, {{ item.company }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

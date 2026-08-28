@@ -1,0 +1,50 @@
+<section class="section section-trainings" id="trainings">
+  <div class="container trainings-shell reveal">
+    <app-section-head
+      eyebrow="Training Programs"
+      title="Upcoming &amp; recently conducted trainings"
+      description="Register for open sessions or browse recently completed programs delivered on-site and in the classroom."
+    />
+
+    <div class="training-tabs" role="tablist" aria-label="Training programs">
+      <button
+        class="tab-btn"
+        [class.is-active]="activeTab() === 'upcoming'"
+        type="button"
+        role="tab"
+        [attr.aria-selected]="activeTab() === 'upcoming'"
+        (click)="setTab('upcoming')"
+      >
+        Upcoming Programs
+      </button>
+      <button
+        class="tab-btn"
+        [class.is-active]="activeTab() === 'conducted'"
+        type="button"
+        role="tab"
+        [attr.aria-selected]="activeTab() === 'conducted'"
+        (click)="setTab('conducted')"
+      >
+        Training Conducted
+      </button>
+    </div>
+
+    @if (activeTab() === 'upcoming') {
+      <div class="training-panel is-active" role="tabpanel">
+        <div class="card-grid">
+          @for (training of upcoming; track training.title) {
+            <app-training-card [training]="training" actionLabel="Register interest" />
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="training-panel is-active" role="tabpanel">
+        <div class="conducted-grid">
+          @for (training of conducted; track training.title) {
+            <app-conducted-card [training]="training" />
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

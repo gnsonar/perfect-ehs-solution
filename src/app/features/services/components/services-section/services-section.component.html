@@ -1,0 +1,15 @@
+<section class="section section-alt" id="services">
+  <div class="container">
+    <app-section-head
+      class="reveal"
+      eyebrow="Our Services"
+      title="Solutions for safety, compliance, and workforce readiness"
+      description="From classroom and on-site training to consultancy and emergency preparedness, we help organizations build safer, compliant workplaces."
+    />
+    <div class="services-grid reveal">
+      @for (service of services; track service.title) {
+        <app-service-card [service]="service" />
+      }
+    </div>
+  </div>
+</section>
