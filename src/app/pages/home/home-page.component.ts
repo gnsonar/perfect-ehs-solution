@@ -5,6 +5,7 @@ import { MOCK_CONTENT } from '../../core/data/mock-content.data';
 import { HeroShowcaseComponent } from '../../features/home/components/hero-showcase/hero-showcase.component';
 import { ServicesSectionComponent } from '../../features/services/components/services-section/services-section.component';
 import { TrainingsSectionComponent } from '../../features/trainings/components/trainings-section/trainings-section.component';
+import { TrainingHighlightsComponent } from '../../features/trainings/components/training-highlights/training-highlights.component';
 import { SummarySectionComponent } from '../../features/summary/components/summary-section/summary-section.component';
 import { ClientsSectionComponent } from '../../features/clients/components/clients-section/clients-section.component';
 import { ContactSectionComponent } from '../../features/contact/components/contact-section/contact-section.component';
@@ -17,6 +18,7 @@ import { ContactSectionComponent } from '../../features/contact/components/conta
     HeroShowcaseComponent,
     ServicesSectionComponent,
     TrainingsSectionComponent,
+    TrainingHighlightsComponent,
     SummarySectionComponent,
     ClientsSectionComponent,
     ContactSectionComponent,

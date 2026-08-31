@@ -1,0 +1,59 @@
+<section class="section section-highlights" id="highlights">
+  <div class="container">
+    <app-section-head
+      class="reveal"
+      eyebrow="Inside The Session"
+      title="A closer look at learning in action"
+      description="Highlights from recent programs, captured with the teams building safer workplaces every day."
+    />
+
+    <div class="highlights-grid reveal">
+      @for (session of sessions; track session.title; let idx = $index) {
+        @if (session.image) {
+          <article class="highlight-card" tabindex="0" (click)="selectCard(idx)" (keydown.enter)="selectCard(idx)" (keydown.space)="$event.preventDefault(); selectCard(idx)">
+            <div class="highlight-image">
+              <img [src]="session.image" [alt]="session.title + ' training highlight'" loading="lazy" />
+              <span class="pill pill-light">{{ session.category }}</span>
+            </div>
+            <div class="highlight-caption">
+              <div>
+                <time [attr.datetime]="session.date">{{ session.date }}</time>
+                <h3>{{ session.title }}</h3>
+              </div>
+              <span class="highlight-arrow" aria-hidden="true">&#8599;</span>
+            </div>
+          </article>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+@if (selectedIndex() !== null) {
+  @let filteredSessions = getVisibleSessions();
+  @let idx = selectedIndex()!;
+  @let currentSession = filteredSessions[idx];
+  <div class="highlights-modal-backdrop" role="presentation" (click)="closeModal()">
+    <section class="highlights-modal" role="dialog" aria-modal="true" [attr.aria-label]="currentSession?.title" (click)="$event.stopPropagation()">
+      <!-- <button class="modal-close" type="button" aria-label="Close gallery" (click)="closeModal()">&#10005;</button> -->
+      <div class="highlights-carousel">
+        <button class="carousel-control carousel-control-prev" type="button" aria-label="Previous image" (click)="prev()">&#8592;</button>
+        <div class="highlights-carousel-viewport">
+          @for (session of filteredSessions; track session.title; let i = $index) {
+            @if (i === idx) {
+              <figure class="carousel-slide is-active">
+                <img [src]="session.image" [alt]="session.title" />
+              </figure>
+            }
+          }
+        </div>
+        <button class="carousel-control carousel-control-next" type="button" aria-label="Next image" (click)="next()">&#8594;</button>
+      </div>
+      <div class="carousel-indicators">
+        @for (session of filteredSessions; track session.title; let i = $index) {
+          <button class="indicator" [class.is-active]="i === idx" type="button" [attr.aria-label]="'Go to image ' + (i + 1) + ' of ' + filteredSessions.length" (click)="goTo(i)">{{ i + 1 }}</button>
+        }
+      </div>
+    </section>
+  </div>
+}

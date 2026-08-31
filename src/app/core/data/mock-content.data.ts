@@ -128,7 +128,7 @@ export const MOCK_CONTENT: SiteContent = {
       category: 'Fire Safety',
       participants: '24 participants',
       image:
-        'https://images.unsplash.com/photo-1541339907198-e08756dedf3d?auto=format&fit=crop&w=900&q=80',
+        '/assets/images/trainings/Training_1.png',
     },
     {
       title: 'NEBOSH IGC Preparation Batch',
@@ -137,7 +137,7 @@ export const MOCK_CONTENT: SiteContent = {
       category: 'HSE Certification',
       participants: '18 participants',
       image:
-        'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80',
+          '/assets/images/trainings/Training_2.png',
     },
     {
       title: 'First Aid with CPR & AED',
@@ -146,7 +146,7 @@ export const MOCK_CONTENT: SiteContent = {
       category: 'Emergency Response',
       participants: '16 participants',
       image:
-        'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80',
+        '/assets/images/trainings/Training_3.png',
     },
     {
       title: 'Fire Warden & Evacuation Marshal',
@@ -155,7 +155,7 @@ export const MOCK_CONTENT: SiteContent = {
       category: 'Fire Safety',
       participants: '20 participants',
       image:
-        'https://images.unsplash.com/photo-1581092918484-831333856fb8?auto=format&fit=crop&w=900&q=80',
+        '/assets/images/trainings/Training_4.png',
     },
     {
       title: 'Authorized Gas Tester (AGT)',
@@ -164,7 +164,7 @@ export const MOCK_CONTENT: SiteContent = {
       category: 'HSE Competency',
       participants: '12 participants',
       image:
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80',
+        '/assets/images/trainings/Training_5.png',
     },
     {
       title: 'Work at Height Awareness',
@@ -173,7 +173,63 @@ export const MOCK_CONTENT: SiteContent = {
       category: 'Site Safety',
       participants: '15 participants',
       image:
-        'https://images.unsplash.com/photo-1531486217800-90ffb675b586?auto=format&fit=crop&w=900&q=80',
+        '/assets/images/trainings/Training_6.png',
+    },
+  ],
+  trainingActions: [
+    {
+      title: 'Basic Firefighting',
+      date: '05 Jul 2026',
+      venue: 'Al Noor Contracting — Doha',
+      category: 'Fire Safety',
+      participants: '24 participants',
+      image:
+        '/assets/images/trainings/Training_1.png',
+    },
+    {
+      title: 'NEBOSH IGC Preparation Batch',
+      date: '22 Jun 2026',
+      venue: 'GulfTech Manufacturing',
+      category: 'HSE Certification',
+      participants: '18 participants',
+      image:
+        '/assets/images/trainings/Training_2.png',
+    },
+    {
+      title: 'First Aid with CPR & AED',
+      date: '10 Jun 2026',
+      venue: 'National Facilities Group',
+      category: 'Emergency Response',
+      participants: '16 participants',
+      image:
+        '/assets/images/trainings/Training_3.png',
+    },
+    {
+      title: 'Fire Warden & Evacuation Marshal',
+      date: '28 May 2026',
+      venue: 'Qatar Infrastructure Corp',
+      category: 'Fire Safety',
+      participants: '20 participants',
+      image:
+        '/assets/images/trainings/Training_4.png',
+    },
+    {
+      title: 'Authorized Gas Tester (AGT)',
+      date: '14 May 2026',
+      venue: 'Qatar Oil Services',
+      category: 'HSE Competency',
+      participants: '12 participants',
+      image:
+        '/assets/images/trainings/Training_5.png',
+    },
+    {
+      title: 'Work at Height Awareness',
+      date: '02 May 2026',
+      venue: 'Harbor Hospitality Group',
+      category: 'Site Safety',
+      participants: '15 participants',
+      image:
+        '/assets/images/trainings/Training_6.png',
     },
   ],
   trainingSummary: [

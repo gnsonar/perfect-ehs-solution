@@ -1,4 +1,4 @@
-<article class="training-card">
+<article class="training-card" tabindex="0" (click)="selected.emit(training)" (keydown.enter)="selected.emit(training)" (keydown.space)="$event.preventDefault(); selected.emit(training)">
   <div class="training-card-top">
     <span class="pill">{{ training.category }}</span>
     <span class="training-date">{{ training.date }}</span>
@@ -13,5 +13,5 @@
       <li><strong>Status:</strong> {{ training.seats }}</li>
     }
   </ul>
-  <button class="text-link" type="button">{{ actionLabel }}</button>
+  <button class="text-link" type="button" (click)="$event.stopPropagation(); selected.emit(training)">{{ actionLabel }}</button>
 </article>

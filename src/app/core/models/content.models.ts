@@ -22,6 +22,17 @@ export interface TrainingSession {
   image?: string;
 }
 
+export interface TrainingAction {
+  title: string;
+  date: string;
+  time?: string;
+  venue: string;
+  category: string;
+  seats?: string;
+  participants?: string;
+  image?: string;
+}
+
 export interface StatItem {
   value: string;
   label: string;
@@ -60,6 +71,7 @@ export interface SiteContent {
   services: ServiceItem[];
   upcomingTrainings: TrainingSession[];
   conductedTrainings: TrainingSession[];
+  trainingActions: TrainingAction[];
   trainingSummary: StatItem[];
   programHighlights: ProgramHighlight[];
   clients: ClientItem[];

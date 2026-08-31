@@ -1,4 +1,4 @@
-<article class="conducted-card">
+<article class="conducted-card" tabindex="0" (click)="selected.emit(training)" (keydown.enter)="selected.emit(training)" (keydown.space)="$event.preventDefault(); selected.emit(training)">
   <div class="conducted-image">
     <img [src]="training.image" [alt]="training.title + ' training session'" loading="lazy" />
     <span class="pill pill-light">{{ training.category }}</span>

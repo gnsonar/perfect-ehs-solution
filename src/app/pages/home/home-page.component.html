@@ -6,6 +6,7 @@
   />
   <app-services-section [services]="content.services" />
   <app-trainings-section [upcoming]="content.upcomingTrainings" [conducted]="content.conductedTrainings" />
+  <app-training-highlights [sessions]="content.trainingActions" />
   <app-summary-section [summary]="content.trainingSummary" [programs]="content.programHighlights" />
   <app-clients-section [clients]="content.clients" [testimonials]="content.testimonials" />
 } @else {
@@ -19,6 +20,7 @@
     [upcoming]="fallback.upcomingTrainings"
     [conducted]="fallback.conductedTrainings"
   />
+  <app-training-highlights [sessions]="fallback.trainingActions" />
   <app-summary-section [summary]="fallback.trainingSummary" [programs]="fallback.programHighlights" />
   <app-clients-section [clients]="fallback.clients" [testimonials]="fallback.testimonials" />
 }

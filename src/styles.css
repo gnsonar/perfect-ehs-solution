@@ -87,8 +87,8 @@ button {
 
 .section-head h2 {
   margin: 0 0 0.75rem;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  line-height: 1.15;
+  font-size: clamp(1.8rem, 3vw, 2rem);
+  line-height: 1;
   color: var(--navy-900);
 }
 
@@ -326,6 +326,50 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.training-carousel {
+  position: relative;
+  padding: 0 2.75rem;
+}
+
+.training-carousel-viewport {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.training-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.training-carousel-viewport > * {
+  min-width: calc(50% - 0.625rem);
+  scroll-snap-align: start;
+}
+
+.conducted-grid.training-carousel-viewport > * {
+  min-width: calc(33.333% - 0.85rem);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--slate-200);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--navy-900);
+  box-shadow: var(--shadow);
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev { left: 0; }
+.carousel-control-next { right: 0; }
+
 .training-card,
 .stat-card,
 .program-card,
@@ -336,6 +380,19 @@ button {
   background: var(--white);
   border: 1px solid var(--slate-200);
   box-shadow: var(--shadow);
+}
+
+.training-card[tabindex],
+.conducted-card[tabindex] {
+  cursor: pointer;
+}
+
+.training-card[tabindex]:focus-visible,
+.conducted-card[tabindex]:focus-visible,
+.carousel-control:focus-visible,
+.modal-close:focus-visible {
+  outline: 3px solid var(--orange-500);
+  outline-offset: 3px;
 }
 
 .training-card-top,
@@ -441,6 +498,279 @@ button {
 
 .section-trainings {
   background: linear-gradient(180deg, var(--white) 0%, var(--slate-50) 100%);
+}
+
+.section-highlights {
+  background:
+    radial-gradient(circle at 90% 15%, rgba(232, 93, 4, 0.08), transparent 24%),
+    linear-gradient(180deg, var(--slate-50) 0%, var(--white) 100%);
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.highlight-card {
+  grid-column: span 4;
+  overflow: hidden;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-card:first-child {
+  grid-column: span 4;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px rgba(11, 31, 51, 0.14);
+}
+
+.highlight-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: var(--navy-900);
+}
+
+.highlight-card:first-child .highlight-image {
+  height: 280px;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+  transform: scale(1.06);
+}
+
+.highlight-image .pill {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.pill-light {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy-900);
+}
+
+.highlight-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.highlight-caption time {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--orange-600);
+}
+
+.highlight-caption h3 {
+  margin: 0.25rem 0 0;
+  color: var(--navy-900);
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.highlight-arrow {
+  display: grid;
+  flex: 0 0 36px;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--orange-500);
+  color: var(--white);
+  font-size: 1.2rem;
+}
+
+.highlight-card[tabindex] {
+  cursor: pointer;
+}
+
+.highlight-card[tabindex]:focus-visible {
+  outline: 3px solid var(--orange-500);
+  outline-offset: 3px;
+}
+
+.highlights-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(11, 31, 51, 0.68);
+}
+
+.highlights-modal {
+  position: relative;
+  width: min(100%, 720px);
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 24px 80px rgba(11, 31, 51, 0.3);
+}
+
+.highlights-carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlights-carousel-viewport {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--navy-900);
+  display: flex;
+}
+
+.carousel-slide {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+}
+
+.carousel-slide.is-active {
+  display: flex;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-slide figcaption {
+  padding: 1.5rem;
+  background: var(--white);
+}
+
+.carousel-slide figcaption > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-slide figcaption time {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--orange-600);
+}
+
+.carousel-slide figcaption h3 {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--navy-900);
+  line-height: 1.25;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--slate-50);
+  border-top: 1px solid var(--slate-200);
+}
+
+.indicator {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--slate-300);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--slate-700);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.is-active {
+  background: var(--orange-500);
+  color: var(--white);
+  border-color: var(--orange-500);
+}
+
+.indicator:focus-visible {
+  outline: 2px solid var(--orange-500);
+  outline-offset: 2px;
+}
+
+.training-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(11, 31, 51, 0.68);
+}
+
+.training-modal {
+  position: relative;
+  width: min(100%, 620px);
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 24px 80px rgba(11, 31, 51, 0.3);
+}
+
+.training-modal-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.training-modal-body {
+  padding: 1.5rem;
+}
+
+.training-modal-body time {
+  display: block;
+  margin-top: 1rem;
+  color: var(--orange-600);
+  font-weight: 700;
+}
+
+.training-modal-body h2 {
+  margin: 0.35rem 0 1rem;
+  color: var(--navy-900);
+  line-height: 1.15;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy-900);
 }
 
 .trainings-shell {
@@ -1099,6 +1429,7 @@ button {
   .card-grid,
   .services-grid,
   .conducted-grid,
+  .highlights-grid,
   .cta-inner,
   .footer-inner {
     grid-template-columns: 1fr;
@@ -1114,8 +1445,19 @@ button {
   }
 
   .services-grid,
-  .conducted-grid {
+  .conducted-grid,
+  .highlights-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .conducted-grid.training-carousel-viewport > *,
+  .training-carousel-viewport > * {
+    min-width: calc(50% - 0.625rem);
+  }
+
+  .highlight-card,
+  .highlight-card:first-child {
+    grid-column: span 1;
   }
 
   .nav-toggle {
@@ -1163,7 +1505,42 @@ button {
   .card-grid,
   .services-grid,
   .conducted-grid,
+  .highlights-grid,
   .showcase-grid {
     grid-template-columns: 1fr;
+  }
+
+  .highlight-card,
+  .highlight-card:first-child {
+    grid-column: span 1;
+  }
+
+  .highlight-card:first-child .highlight-image,
+  .highlight-image {
+    height: 220px;
+  }
+
+  .carousel-slide img {
+    max-height: 300px;
+    height: 240px;
+  }
+
+  .highlights-carousel-viewport {
+    min-height: 340px;
+  }
+
+  .carousel-indicators {
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .indicator {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .conducted-grid.training-carousel-viewport > *,
+  .training-carousel-viewport > * {
+    min-width: 100%;
   }
 }

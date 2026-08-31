@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TrainingSession } from '../../../../core/models/content.models';
 
 @Component({
@@ -9,4 +9,5 @@ import { TrainingSession } from '../../../../core/models/content.models';
 export class TrainingCardComponent {
   @Input({ required: true }) training!: TrainingSession;
   @Input() actionLabel = 'Register interest';
+  @Output() selected = new EventEmitter<TrainingSession>();
 }

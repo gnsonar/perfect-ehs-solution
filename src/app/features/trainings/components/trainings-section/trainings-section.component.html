@@ -31,20 +31,50 @@
 
     @if (activeTab() === 'upcoming') {
       <div class="training-panel is-active" role="tabpanel">
-        <div class="card-grid">
+        <div class="training-carousel">
+          <button class="carousel-control carousel-control-prev" type="button" aria-label="Previous upcoming trainings" (click)="scrollCards(upcomingViewport, -1)">&#8592;</button>
+          <div class="card-grid training-carousel-viewport" #upcomingViewport>
           @for (training of upcoming; track training.title) {
-            <app-training-card [training]="training" actionLabel="Register interest" />
+            <app-training-card [training]="training" actionLabel="View details" (selected)="showDetails($event)" />
           }
+          </div>
+          <button class="carousel-control carousel-control-next" type="button" aria-label="Next upcoming trainings" (click)="scrollCards(upcomingViewport, 1)">&#8594;</button>
         </div>
       </div>
     } @else {
       <div class="training-panel is-active" role="tabpanel">
-        <div class="conducted-grid">
+        <div class="training-carousel">
+          <button class="carousel-control carousel-control-prev" type="button" aria-label="Previous conducted trainings" (click)="scrollCards(conductedViewport, -1)">&#8592;</button>
+          <div class="conducted-grid training-carousel-viewport" #conductedViewport>
           @for (training of conducted; track training.title) {
-            <app-conducted-card [training]="training" />
+            <app-conducted-card [training]="training" (selected)="showDetails($event)" />
           }
+          </div>
+          <button class="carousel-control carousel-control-next" type="button" aria-label="Next conducted trainings" (click)="scrollCards(conductedViewport, 1)">&#8594;</button>
         </div>
       </div>
     }
   </div>
 </section>
+
+@if (selectedTraining(); as training) {
+  <div class="training-modal-backdrop" role="presentation" (click)="closeDetails()">
+    <section class="training-modal" role="dialog" aria-modal="true" [attr.aria-label]="training.title" (click)="$event.stopPropagation()">
+      <button class="modal-close" type="button" aria-label="Close training details" (click)="closeDetails()">&#10005;</button>
+      @if (training.image) {
+        <img class="training-modal-image" [src]="training.image" [alt]="training.title + ' training session'" />
+      }
+      <div class="training-modal-body">
+        <span class="pill">{{ training.category }}</span>
+        <time [attr.datetime]="training.date">{{ training.date }}</time>
+        <h2>{{ training.title }}</h2>
+        <ul class="training-meta">
+          @if (training.time) { <li><strong>Time:</strong> {{ training.time }}</li> }
+          <li><strong>Venue:</strong> {{ training.venue }}</li>
+          @if (training.participants) { <li><strong>Attendance:</strong> {{ training.participants }}</li> }
+          @if (training.seats) { <li><strong>Status:</strong> {{ training.seats }}</li> }
+        </ul>
+      </div>
+    </section>
+  </div>
+}
